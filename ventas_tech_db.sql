@@ -1,5 +1,6 @@
 CREATE DATABASE Ventas_Tech_DB;
 -- Motor utilizado: MySQL (o SQL Server según prefieras)
+USE DATABASE Ventas_Tech_DB;
 
 /* ==============================================================================
    1. LIMPIEZA PREVIA (DROP TABLES)
