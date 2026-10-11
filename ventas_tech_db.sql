@@ -106,6 +106,7 @@ INSERT INTO ventas (id_venta, id_cliente, id_producto, id_territorio, cantidad, 
    4. VALIDACIÓN
    ============================================================================== */
 SELECT * FROM categorias; -- esperado: 4 filas
+SELECT * FROM territorios; -- esperado: 5 filas
 SELECT * FROM clientes;   -- esperado: 5 filas
 SELECT * FROM productos;  -- esperado: 6 filas
 SELECT * FROM ventas;     -- esperado: 10 filas
