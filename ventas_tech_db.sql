@@ -9,6 +9,7 @@ USE DATABASE Ventas_Tech_DB;
 DROP TABLE IF EXISTS ventas;
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS clientes;
+DROP TABLE IF EXISTS territorios;
 DROP TABLE IF EXISTS categorias;
 
 /* ==============================================================================
@@ -20,6 +21,13 @@ CREATE TABLE categorias (
     descripcion VARCHAR(200)
 );
 
+CREATE TABLE territorios (
+   id_territorio INT PRIMARY KEY
+   zona VARCHAR(100),
+   provincia VARCHAR(100),
+   ciudad VARCHAR(100)
+);
+   
 CREATE TABLE clientes (
     id_cliente INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -42,11 +50,13 @@ CREATE TABLE ventas (
     id_venta INT PRIMARY KEY,
     id_cliente INT,
     id_producto INT,
+    id_territorio INT, -- 1.
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
     fecha_venta DATE NOT NULL,
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
-    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto),
+    FOREIGN KEY (id_territorio) REFERENCES territorios(id_territorio) -- 2. Estableces la relación
 );
 
 /* ==============================================================================
@@ -57,6 +67,13 @@ INSERT INTO categorias (id_categoria, nombre_categoria, descripcion) VALUES
 (2, 'Accesorios', 'Periféricos y complementos'),
 (3, 'Audio', 'Auriculares y parlantes'),
 (4, 'Almacenamiento', 'Discos y memorias');
+
+INSERT INTO territorios (id_territorio, zona, provincia, ciudad) VALUES 
+(1, 'AMBA', 'Buenos Aires', 'La plata'),
+(2, 'Centro', 'Córdoba', 'Córdoba'),
+(3, 'Litoral', 'Santa Fe', 'Rosario'),
+(4, 'Cuyo', 'Mendoza', 'Mendoza'),
+(5, 'Norte', 'Tucumán', 'San Miguel de Tucumán');
 
 INSERT INTO clientes (id_cliente, nombre, email, ciudad, fecha_registro) VALUES 
 (1, 'María López', 'maria@mail.com', 'Buenos Aires', '2024-01-05'),
@@ -73,17 +90,17 @@ INSERT INTO productos (id_producto, nombre_producto, id_categoria, precio, stock
 (5, 'SSD Externo 1TB', 4, 130.00, 18, 1),
 (6, 'Teclado Mecánico', 2, 95.00, 40, 1);
 
-INSERT INTO ventas (id_venta, id_cliente, id_producto, cantidad, precio_unitario, fecha_venta) VALUES 
-(1, 1, 1, 2, 1200.00, '2024-03-05'),
-(2, 2, 2, 5, 28.00, '2024-03-06'),
-(3, 3, 3, 1, 450.00, '2024-03-07'),
-(4, 1, 4, 2, 120.00, '2024-03-08'),
-(5, 4, 5, 3, 130.00, '2024-03-10'),
-(6, 2, 6, 4, 95.00, '2024-03-11'),
-(7, 5, 1, 1, 1200.00, '2024-03-12'),
-(8, 3, 2, 8, 28.00, '2024-03-13'),
-(9, 4, 4, 1, 120.00, '2024-03-14'),
-(10, 5, 3, 2, 450.00, '2024-03-15');
+INSERT INTO ventas (id_venta, id_cliente, id_producto, id_territorio, cantidad, precio_unitario, fecha_venta) VALUES 
+(1, 1, 1, 2, 2, 1200.00, '2024-03-05'),
+(2, 2, 2, 5, 5, 28.00, '2024-03-06'),
+(3, 3, 3, 1, 1, 450.00, '2024-03-07'),
+(4, 1, 4, 4, 2, 120.00, '2024-03-08'),
+(5, 4, 5, 3, 3, 130.00, '2024-03-10'),
+(6, 2, 6, 5, 4, 95.00, '2024-03-11'),
+(7, 5, 1, 1, 1, 1200.00, '2024-03-12'),
+(8, 3, 2, 4, 8, 28.00, '2024-03-13'),
+(9, 4, 4, 2, 1, 120.00, '2024-03-14'),
+(10, 5, 3, 1, 2, 450.00, '2024-03-15');
 
 /* ==============================================================================
    4. VALIDACIÓN
