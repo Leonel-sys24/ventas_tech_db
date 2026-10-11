@@ -1,5 +1,5 @@
 CREATE DATABASE Ventas_Tech_DB;
--- Motor utilizado: MySQL (o SQL Server según prefieras)
+--Lenguaje utilizado sql server
 USE DATABASE Ventas_Tech_DB;
 
 /* ==============================================================================
