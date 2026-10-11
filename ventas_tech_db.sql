@@ -1,5 +1,5 @@
 CREATE DATABASE Ventas_Tech_DB;
---Lenguaje utilizado sql server.
+--Lenguaje utilizado sql server. 
 USE DATABASE Ventas_Tech_DB;
 
 /* ==============================================================================
