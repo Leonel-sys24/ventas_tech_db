@@ -1,7 +1,7 @@
 /* ==============================================================================
    1. LIMPIEZA PREVIA (DROP TABLES)
    ============================================================================== */
-DROP TABLE IF EXISTS ventas;
+DROP TABLE IF EXISTS ventas; 
 DROP TABLE IF EXISTS productos;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS territorios; -- Se borra al final porque clientes depende de esta
